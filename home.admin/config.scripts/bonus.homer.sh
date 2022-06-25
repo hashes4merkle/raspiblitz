@@ -2,7 +2,7 @@
 
 # https://github.com/bastienwirtz/homer
 
-installVersion="v21.03.2"
+installVersion="v22.06.1"
 remoteVersion=$(curl -s https://api.github.com/repos/bastienwirtz/homer/releases/latest|grep tag_name|head -1|cut -d '"' -f4)
 
 # command info
