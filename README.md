@@ -61,7 +61,7 @@ Table of Contents
          - [LND Auto-Unlock](#lnd-auto-unlock)
          - [LND StaticChannelBackup on Nextcloud](#lnd-staticchannelbackup-on-nextcloud)
          - [StaticChannelBackup on USB Drive](#staticchannelbackup-on-usb-drive)
-         - [StaticChannelBackup per SCP/SSH to other server](#staticchannelbackup-per-scpssh-to-other-server)
+         - [StaticChannelBackup per SFTP/SSH to other server](#staticchannelbackup-per-sftpssh-to-other-server)
          - [C-LIGHTNING NODE](#c-lightning-node)
          - [CL CLBOSS Automatic Node Manager](#cl-clboss-automatic-node-manager)
          - [CL Wallet Encryption](#cl-wallet-encryption)
@@ -126,7 +126,7 @@ Table of Contents
     - [LND-Lightning](#lnd-lightning)
     - [Backup for On-Chain- & Channel-Funds](#-channel-funds)
       - [A) Nextcloud](#a-nextcloud)
-      - [B) SCP Backup Target](#b-scp-backup-target)
+      - [B) SFTP Backup Target](#b-sftp-backup-target)
       - [C) Local Backup Target (USB Thumbdrive)](#c-local-backup-target-usb-thumbdrive)
   - [Updating RaspiBlitz to new Version](#updating-raspiblitz-to-new-version)
   - [Build the SD Card Image](#build-the-sd-card-image)
@@ -481,7 +481,7 @@ Know that the other Blitz will be offline to the lightning network during the co
 To copy from your laptop/computer (`WINDOWS`, `MACOS` & `LINUX` options) you first need to download & validate the blockchain on your own computer/laptop.
 To do so, install latest bitcoin-core (0.18.1 or higher) from [bitcoin.org](https://bitcoin.org/en/download) and keep it running until the blockchain is synced (will need around 400 GB).
 Then under the `COPY` option choose the Operating System.
-The copy will be done over the local network by SCP (SSH file transfer) - follow the instructions given in the dialogues.
+The copy will be done over the local network by SFTP (SSH file transfer) - follow the instructions given in the dialogues.
 It's advised to keep a backup of Bitcoin Core & the blockchain data directory on your laptop/computer in case you need to re-setup the RaspiBlitz.
 
 More details: [I have the full blockchain on another computer. How do I copy it to the RaspiBlitz?](FAQ.md#i-have-the-full-blockchain-on-another-storage-how-do-i-copy-it-to-the-raspiblitz)
@@ -760,16 +760,16 @@ Find free Nextcloud providers here to sign up: https://nextcloud.com/signup/
 You can connect a small extra USB drive to your RaspiBlitz (choose a small one up to 32GB, don't use second HDD or SSD here as that would drain too much power from the RaspiBlitz).
 That USB drive will then be used to store your latest StaticChannelBackup, just in case your HDD encounters an error.
 
-##### StaticChannelBackup per SCP/SSH to other server
+##### StaticChannelBackup per SFTP/SSH to other server
 
-An option for more advanced users -- that you only can set directly in the `raspiblitz.conf` -- is the automated backup of the StaticChannelBackup to another server by SSH/SCP.
+An option for more advanced users -- that you only can set directly in the `raspiblitz.conf` -- is the automated backup of the StaticChannelBackup to another server by SSH/SFTP.
 For this you need to set the value:
 
-`scpBackupTarget='[USER]@[SERVER]:[DIRPATH-WITHOUT-ENDING-/]'`
+`sftpBackupTarget='[USER]@[SERVER]:[DIRPATH-WITHOUT-ENDING-/]'`
 
-and you can optionally set custom options for the SCP command (for example to set a non-default port) with:
+and you can optionally set custom options for the SFTP command (for example to set a non-default port) with:
 
-`scpBackupOptions='[YOUR-CUSTOM-OPTIONS]'`
+`sftpBackupOptions='[YOUR-CUSTOM-OPTIONS]'`
 
 On the target server add the root ssh public key of your RaspiBlitz to the `authorized_keys` file for the user - how to do this see: https://www.linode.com/docs/security/authentication/use-public-key-authentication-with-ssh/
 
@@ -1055,9 +1055,9 @@ Here are the following export options to get the Macaroon and TLS files to be us
 
 ###### SSH Download
 
-SCP is a SSH-like command used to transfer files.
-If we're able to SSH into the RaspiBlitz then using SCP to transfer files should also work.
-If you choose this option, RaspiBlitz will print prepared SCP commands you can copy+paste to run in a second terminal.
+SFTP is a SSH-like command used to transfer files.
+If we're able to SSH into the RaspiBlitz then using SFTP to transfer files should also work.
+If you choose this option, RaspiBlitz will print prepared SFTP commands you can copy+paste to run in a second terminal.
 
 This method is recommended to export to:
 * [Zap Desktop Wallet](https://github.com/LN-Zap/zap-desktop)
@@ -1149,7 +1149,7 @@ Use this if you want to report a software problem with your RaspiBlitz, so that 
 
 ##### BACKUP-LND: Backup your LND data (Rescue-File)
 
-This stops your RaspiBlitz and creates an LND-Rescue ZIP file that you can download via SCP to your laptop.
+This stops your RaspiBlitz and creates an LND-Rescue ZIP file that you can download via SFTP to your laptop.
 This can be used to move your LND id, wallet & channels to another RaspiBlitz.
 
 *NOTICE: If you start your RaspiBlitz after this backup again the backup is outdated and using it can risk losing your channel funds.*
@@ -1169,7 +1169,7 @@ Multiple options to repair/backup your c-lightning node:
 
 ##### MIGRATION: Migrate Blitz Data to new Hardware
 
-This stops your RaspiBlitz and creates a Migration ZIP file you can download/export per SCP to your laptop.
+This stops your RaspiBlitz and creates a Migration ZIP file you can download/export per SFTP to your laptop.
 This contains all the important data from your RaspiBlitz including LND, your Blitz configuration and also data from your installed apps.
 Can be used to migrate your RaspiBlitz to a new hardware - for example if you want to replace the HDD with a SSD.
 For details on how to import a Migration File [see here](README.md#import-a-migration-file).
@@ -1370,11 +1370,11 @@ Nextcloud is an open-source project to host your own files: https://en.wikipedia
 
 Find free Nextcloud providers here to sign up: https://nextcloud.com/signup/
 
-#### B) SCP Backup Target
+#### B) SFTP Backup Target
 
 *You can also backup the StaticChannelBackup file to your own server, but this needs manual setup:*
 
-In the `/mnt/hdd/raspiblitz.conf` the parameter `scpBackupTarget='[USER]@[SERVER]:[DIRPATH-WITHOUT-ENDING-/]'` can be set to activate this feature.
+In the `/mnt/hdd/raspiblitz.conf` the parameter `sftpBackupTarget='[USER]@[SERVER]:[DIRPATH-WITHOUT-ENDING-/]'` can be set to activate this feature.
 On the remote server, the public key of the RaspiBlitz root user needs to be added to the `authorized_keys` file so that no password is needed for the background script to make the backup.
 
 The script `/home/admin/config.scripts/blitz.ssh.sh` show (`root-get`) and transfer ssh-pubkey (`root-transfer`) to a remote server.
