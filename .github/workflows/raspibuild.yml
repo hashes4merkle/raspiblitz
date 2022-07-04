@@ -64,7 +64,7 @@ jobs:
           compression: none # optional, default is zip
 
           # Host name of the image.
-          hostname: raspiblitz # optional, default is raspberrypi
+          # hostname: raspiblitz # optional, default is raspberrypi
 
           # If this feature is enabled, the action will configure pi-gen to not export any stage as image but the last one
           # defined in property 'stage-list'. This is helpful when building a single image flavor (in contrast to building
