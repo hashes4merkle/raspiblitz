@@ -41,21 +41,10 @@ jobs:
           cat > raspibuild-stage/package-test/00-run-chroot.sh <<-EOF
           #!/bin/bash
           sudo touch /ssh
-          sudo apt-get install -y wget
           wget https://raw.githubusercontent.com/rootzoll/raspiblitz/v1.7/build_sdcard.sh && sudo bash build_sdcard.sh
           EOF
           } &&
-          chmod +x raspibuild-stage/package-test/00-run-chroot.sh &&
-          {
-          cat > raspibuild-stage/prerun.sh <<-EOF
-          #!/bin/bash -e
-          if [ ! -d "\${ROOTFS_DIR}" ]; then
-            copy_previous
-          fi
-          EOF
-          } &&
-          chmod +x raspibuild-stage/prerun.sh
-
+          chmod +x raspibuild-stage/package-test/00-run-chroot.sh 
       - name: pi-gen-action
         uses: usimd/pi-gen-action@v1
         with:
