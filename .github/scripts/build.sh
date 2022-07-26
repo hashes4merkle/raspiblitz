@@ -15,7 +15,7 @@ go build
 
 # Move json file to packer folder
 echo -e "\nMoving json file to packer folder..."
-
+mv raspiblitz.json boards/raspberry-pi/packer-builder-arm.json
 # Build packer
 echo -e "\nBuilding packer image..."
-packer build boards/odroid-u3/archlinuxarm.json
+docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build boards/raspberry-pi/raspiblitz.json
