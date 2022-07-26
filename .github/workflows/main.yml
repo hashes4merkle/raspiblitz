@@ -36,4 +36,4 @@ jobs:
 
       # Create a stage 'stage3' to build Raspiblitz environment.
       - name: Build script 
-      - run: ./.github/scripts/build.sh
+        run: ./.github/scripts/build.sh
