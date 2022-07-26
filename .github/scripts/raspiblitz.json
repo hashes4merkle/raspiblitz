@@ -59,6 +59,18 @@
       {
         "type": "shell",
         "script": "post-install.sh"
+      },
+      {
+        "type": "shell",
+        "script": "post-install-bitcoin.sh"
+      },
+      {
+        "type": "shell",
+        "script": "post-install-lnd.sh"
+      },
+      {
+        "type": "shell",
+        "script": "post-install-cln.sh"
       }
     ]
   }
