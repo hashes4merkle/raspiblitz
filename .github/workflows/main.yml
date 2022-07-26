@@ -32,8 +32,9 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Hello Blitz
-        run: echo Building Raspiblitz image!
+        run: echo Building Raspiblitz Image!
 
-      # Create a stage 'stage3' to build Raspiblitz environment.
+      # Run the build script
       - name: Build script 
         run: ./.github/scripts/build.sh
+        shell: bash
