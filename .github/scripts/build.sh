@@ -8,14 +8,14 @@ sudo apt-get update -y && sudo apt-get install packer -y
 
 # Install Packer Arm Plugin
 echo -e "\nInstalling Packer Arm Plugin..."
-wget https://github.com/mkaczanowski/packer-builder-arm 
-cd packer-builder-arm
+wget https://github.com/mkaczanowski/packer-builder-arm -P ~
+cd ~/packer-builder-arm
 go mod download
 go build
 
 # Move json file to packer folder
-echo -e "\nMoving json file to packer folder..."
-mv raspiblitz.json boards/raspberry-pi/packer-builder-arm.json
-# Build packer
-echo -e "\nBuilding packer image..."
-docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build boards/raspberry-pi/raspiblitz.json
+# echo -e "\nMoving json file to packer folder..."
+# mv raspiblitz.json boards/raspberry-pi/packer-builder-arm.json
+# # Build packer
+# echo -e "\nBuilding packer image..."
+# docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build boards/raspberry-pi/raspiblitz.json
