@@ -26,4 +26,4 @@ wget https://github.com/hashes4merkle/raspiblitz/blob/pipelines/.github/scripts/
 
 # Build packer
 echo -e "\nBuilding packer image..."
-# docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build boards/raspberry-pi/raspiblitz.json
+docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build boards/raspberry-pi/raspiblitz.json
