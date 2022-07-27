@@ -30,4 +30,5 @@ wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.githu
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/post-install-cln.sh
 # Build packer
 echo -e "\nBuilding packer image..."
-docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build raspiblitz.json
+# docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build raspiblitz.json
+sudo packer build raspiblitz.json
