@@ -22,7 +22,7 @@ go build
 # Move json file to packer folder
 echo -e "\nMoving json file to packer folder..."
 # cp raspiblitz.json boards/raspberry-pi/raspiblitz.json
-wget https://github.com/hashes4merkle/raspiblitz/blob/pipelines/.github/scripts/raspiblitz.json 
+wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/raspiblitz.json 
 
 # Build packer
 echo -e "\nBuilding packer image..."
