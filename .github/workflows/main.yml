@@ -34,7 +34,12 @@ jobs:
       - name: Hello Blitz
         run: echo Building Raspiblitz Image!
 
+      # Add permissions to file 
+      - name: Add executable
+        run: chmod +x "${GITHUB_WORKSPACE}/.github/scripts/build.sh"
+        
       # Run the build script
       - name: Build script 
         run: ./.github/scripts/build.sh
         shell: bash
+      
