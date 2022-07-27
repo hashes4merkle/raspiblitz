@@ -8,7 +8,7 @@ sudo apt-get update -y && sudo apt-get install packer -y
 
 # Install Packer Arm Plugin
 echo -e "\nInstalling Packer Arm Plugin..."
-wget https://github.com/mkaczanowski/packer-builder-arm -P ~
+git clone https://github.com/mkaczanowski/packer-builder-arm
 cd ~/packer-builder-arm
 go mod download
 go build
