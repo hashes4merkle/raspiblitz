@@ -24,7 +24,10 @@ echo -e "\nMoving json file to packer folder..."
 # cp raspiblitz.json boards/raspberry-pi/raspiblitz.json
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/raspiblitz.json 
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/packages.config
-
+wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/post-install.sh
+wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/post-install-bitcoin.sh
+wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/post-install-lnd.sh
+wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/post-install-cln.sh
 # Build packer
 echo -e "\nBuilding packer image..."
 docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build raspiblitz.json
