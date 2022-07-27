@@ -21,7 +21,7 @@ go build
 
 # Move json file to packer folder
 echo -e "\nMoving json file to packer folder..."
-# cp raspiblitz.json boards/raspberry-pi/raspiblitz.json
+wget https://downloads.raspberrypi.org/raspios_full_arm64/images/raspios_full_arm64-2022-01-28/2022-01-28-raspios-bullseye-arm64-full.zip
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/raspiblitz.json 
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/packages.config
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/post-install.sh
@@ -30,6 +30,6 @@ wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.githu
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/post-install-cln.sh
 # Build packer
 echo -e "\nBuilding packer image..."
-echo -e "Current Directory: $pwd"
+pwd
 ls -la
-docker run --rm --privileged -v /dev:/dev -v ~/packer-builder-arm:/build mkaczanowski/packer-builder-arm build raspiblitz.json
+docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build raspiblitz.json
