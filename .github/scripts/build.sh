@@ -22,8 +22,8 @@ go build
 # Move json file to packer folder
 echo -e "\nMoving json file to packer folder..."
 # cp raspiblitz.json boards/raspberry-pi/raspiblitz.json
-wget https://github.com/hashes4merkle/raspiblitz/blob/pipelines/.github/scripts/raspiblitz.json -P boards/raspberry-pi/raspiblitz.json
+wget https://github.com/hashes4merkle/raspiblitz/blob/pipelines/.github/scripts/raspiblitz.json 
 
 # Build packer
 echo -e "\nBuilding packer image..."
-docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build boards/raspberry-pi/raspiblitz.json
+docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build raspiblitz.json
