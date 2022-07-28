@@ -47,5 +47,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Raspiblitz
-          path: raspiblitz-arm.img
+          path: ${{ github.workspace }}/raspiblitz-arm.img
       
