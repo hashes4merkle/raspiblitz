@@ -48,10 +48,4 @@ jobs:
         with:
           name: Raspiblitz
           path: ${{ github.workspace }}/packer-builder-arm/raspiblitz-arm.img
-
-      - name: Upload image 
-        uses: actions/upload-artifact@v3
-        with:
-          name: Raspiblitz
-          path: raspiblitz-arm.img
       
