@@ -47,5 +47,5 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: Raspiblitz
-          path: ${{ runner.temp }}/raspiblitz-arm.img
+          path: ./raspiblitz-arm.img
       

@@ -21,7 +21,12 @@ go build
 
 # Move json file to packer folder
 echo -e "\nMoving json file to packer folder..."
-wget https://downloads.raspberrypi.org/raspios_full_arm64/images/raspios_full_arm64-2022-01-28/2022-01-28-raspios-bullseye-arm64-full.zip
+if [ -f 2022-01-28-raspios-bullseye-arm64-full.zip ]
+then
+    echo "File exists."
+else
+    wget https://downloads.raspberrypi.org/raspios_lite_arm64/images/raspios_lite_arm64-2021-05-28/2022-01-28-raspios-bullseye-arm64-full.zip
+fi
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/raspiblitz.json 
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/packages.config
 wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.github/scripts/post-install.sh
