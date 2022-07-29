@@ -36,11 +36,7 @@ wget https://raw.githubusercontent.com/hashes4merkle/raspiblitz/pipelines/.githu
 # Build packer
 echo -e "\nBuilding packer image..."
 docker run --rm --privileged -v /dev:/dev -v ${PWD}:/build mkaczanowski/packer-builder-arm build raspiblitz.json
-pwd
-ls -la
 echo -e "\nBuild complete." 
 echo -e "\nUploading image to release..."
-cd output-arm-image
-ls -la  
 # Upload image to release  
 # curl -X POST -H "Authorization: token $GITHUB_TOKEN" -H "Content-Type: application/octet-stream" --data-binary @raspiblitz.img.gz https://uploads.github.com/repos/hashes4merkle/raspiblitz/releases/46320270/assets?name=raspiblitz.img.gz
