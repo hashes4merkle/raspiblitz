@@ -168,7 +168,7 @@ if [ "$1" = "refresh" ]; then
   sudo mv ${TLSPATH}/tls.cert ${TLSPATH}/tls.cert.old 
   sudo mv ${TLSPATH}/tls.key ${TLSPATH}/tls.key.old 
 
-  echo "# start to create new generate new TLSCert"
+  echo "# start to generate new TLSCert"
   sudo systemctl start lnd
   echo "# wait until generated"
   newCertExists=0
