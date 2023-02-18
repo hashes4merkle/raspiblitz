@@ -496,6 +496,10 @@ if [ "${homer}" == "on" ]; then
   OPTIONS+=(HOMER "Update Homer")
 fi
 
+if [ "${monero}" == "on" ]; then
+  OPTIONS+=(MONERO "Update Monero")
+fi
+
 if [ "${mempoolExplorer}" == "on" ]; then
   OPTIONS+=(MEMPOOL "Update Mempool Explorer")
 fi
@@ -556,6 +560,9 @@ case $CHOICE in
     ;;
   HOMER)
     /home/admin/config.scripts/bonus.homer.sh update
+    ;;
+  MONERO)
+    /home/admin/config.scripts/bonus.monero.sh update
     ;;
   MEMPOOL)
     /home/admin/config.scripts/bonus.mempool.sh update

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+ 
 echo "Starting the main menu ..."
 
 # MAIN MENU AFTER SETUP
@@ -86,6 +87,9 @@ fi
 if [ "${lit}" == "on" ]; then
   OPTIONS+=(LIT "LIT (loop, pool, faraday)")
 fi
+if [ "${lndg}" == "on" ]; then
+  OPTIONS+=(LNDG "LNDg (auto-rebalance, auto-fees)")
+fi
 if [ "${sparko}" == "on" ]; then
   OPTIONS+=(SPARKO "Sparko Webwallet")
 fi
@@ -119,6 +123,9 @@ if [ "${specter}" == "on" ]; then
 fi
 if [ "${joinmarket}" == "on" ]; then
   OPTIONS+=(JM "JoinMarket with JoininBox")
+fi
+if [ "${jam}" == "on" ]; then
+  OPTIONS+=(JAM "Jam (JoinMarket WebUI)")
 fi
 if [ "${faraday}" == "on" ]; then
   OPTIONS+=(FARADAY "Faraday Channel Management")
